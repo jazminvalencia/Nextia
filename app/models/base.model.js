@@ -9,10 +9,13 @@ class BaseClass {
           },
           this.created_at = {
             type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW,
             allowNull: false,
           },
           this.updated_at = {
             type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW,
+            onUpdate: DataTypes.NOW,
             allowNull: false,
           }
     }
