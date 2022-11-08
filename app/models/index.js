@@ -1,6 +1,7 @@
 const dbConfig = require("../config/db.config.js");
 const Base = require("./base.model");
 const User = require("./user.model");
+const Good = require("./good.model");
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
@@ -24,5 +25,9 @@ db.sequelize = sequelize;
 
 db.base = sequelize.define(Base.moduleName, new Base.BaseClass());
 db.user = sequelize.define(User.moduleName,new User.UserClass());
+db.good = sequelize.define(Good.moduleName, new Good.GoodClass());
+
+db.good.belongsTo(db.user);
+db.user.hasMany(db.good);
 
 module.exports = db;
