@@ -24,13 +24,11 @@ app.use('/static', express.static('public'));
 const db = require("./app/models");
 
 db.sequelize.sync();
-// db.sequelize.sync({ force: true }).then(() => {
-//   console.log("Drop and re-sync db.");
-// });
+ //db.sequelize.sync({ force: true }).then(() => {
+ //  console.log("Drop and re-sync db.");
+ //});
 require("./app/routes/goods.route")(app);
-app.get('*', function (request, response) {
-  response.sendFile(path.resolve(__dirname, 'index.html'));
-});
+
 
 
 const PORT = process.env.PORT || 5678;
