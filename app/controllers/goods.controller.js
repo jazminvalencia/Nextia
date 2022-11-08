@@ -21,7 +21,6 @@ exports.create = async (req, res) => {
    }
  };
 
-
 exports.findAll = async (req, res) => {
    try {
       let data = await Goods.findAll({});
@@ -33,7 +32,6 @@ exports.findAll = async (req, res) => {
        });
    }
 };
-
 
 exports.update = async (req, res) => {
    const id = req.params.id;
