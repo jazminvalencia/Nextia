@@ -1,11 +1,13 @@
-# Node.js Rest APIs with Express, Sequelize & MySQL example
+# Prueba tecnica para Nextia
 
-## Project setup
+## Instalacion de dependencias
+
 ```
 npm install
 ```
 
-### Run
+### ejecutar
+
 ```
-node server.js
+npm start
 ```
