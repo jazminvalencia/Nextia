@@ -28,7 +28,7 @@ db.sequelize.sync();
  //  console.log("Drop and re-sync db.");
  //});
 require("./app/routes/auth.route")(app);
-
+require("./app/routes/goods.route")(app);
 
 
 const PORT = process.env.PORT || 5678;

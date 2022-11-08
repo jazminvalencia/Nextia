@@ -3,7 +3,7 @@ module.exports = app => {
   
     var router = require("express").Router();
   
-    //router.post("/logIn", auth.login);
+    router.post("/logIn", auth.login);
   
     router.post("/signUp", auth.signUp);
   
