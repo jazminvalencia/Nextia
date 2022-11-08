@@ -6,6 +6,10 @@ module.exports = app => {
     router.post("/", goods.create);
 
     router.get("/", goods.findAll);
+
+    router.put("/:id", goods.update);
+
+    router.delete("/:id", goods.destroy);
   
     app.use('/api/goods', router);
   };
