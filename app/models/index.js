@@ -23,7 +23,6 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.base = sequelize.define(Base.moduleName, new Base.BaseClass());
 db.user = sequelize.define(User.moduleName,new User.UserClass());
 db.good = sequelize.define(Good.moduleName, new Good.GoodClass());
 

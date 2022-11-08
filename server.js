@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const { authenticateJWT } = require("./app/middlewares/auth")
 
 var path = require('path');
 global.appRoot = path.resolve(__dirname);
@@ -28,6 +29,7 @@ db.sequelize.sync();
  //  console.log("Drop and re-sync db.");
  //});
 require("./app/routes/auth.route")(app);
+app.use(authenticateJWT);
 require("./app/routes/goods.route")(app);
 
 

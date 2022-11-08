@@ -4,8 +4,6 @@ const Users = db.user;
 const Op = db.Sequelize.Op;
 const jwt = require("jsonwebtoken");
 
-// Handling post request
-
 exports.login = async (req, res, next) => {
   let { user, password } = req.body;
  
@@ -13,13 +11,11 @@ exports.login = async (req, res, next) => {
   try {
     existingUser = await Users.findOne({where: { user: user }});
 
-    console.log(existingUser.id,'fghjs');
     if (!existingUser || existingUser.password != password) {
       const error = Error("Wrong details please check at once");
       return next(error);
     }
 
-     //Creating jwt token
      token = jwt.sign(
       { id: existingUser.id, user: existingUser.user },
       "secretkeyappearshere",
@@ -67,10 +63,9 @@ exports.signUp = async (req, res, next) => {
             user: newUser.user, token: token },
        });
   } catch (err){
-   res.status(500).send({
-      message:
-         err.message || "Some error occurred."
-    });
-}
- 
+      res.status(500).send({
+         message:
+            err.message || "Some error occurred."
+      });
+   }
 }

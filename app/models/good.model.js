@@ -6,11 +6,13 @@ class GoodClass extends BaseClass {
         super();
         this.article = {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: { len: [0,255] }
         },
         this.description = {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: { len: [0,255] }
         },
         this.userId = {
             type: DataTypes.INTEGER,

@@ -7,7 +7,7 @@ exports.create = async (req, res) => {
    const good = {
       article: req.body.article,
       description: req.body.description,
-      userId: req.body.userId
+      userId: req.currentUser.id
    };
  
    try{
@@ -75,4 +75,17 @@ exports.destroy = async (req, res) =>{
    }
 }
 
+exports.multiId = async (req, res) => {
+   const id = req.body.goodsIds;
+   
+   try {
+      let data = await Goods.findAll({where: {id: id}});
+      res.send(data);
+   } catch(err) {
+      res.status(500).send({
+         message:
+           err.message || "Some error occurred."
+       });
+   }
+};
 

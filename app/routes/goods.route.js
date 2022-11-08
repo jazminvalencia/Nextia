@@ -10,6 +10,8 @@ module.exports = app => {
     router.put("/:id", goods.update);
 
     router.delete("/:id", goods.destroy);
+
+    router.get("/multiId",goods.multiId);
   
     app.use('/api/goods', router);
   };
