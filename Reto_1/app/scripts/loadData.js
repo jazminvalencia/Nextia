@@ -2,6 +2,8 @@ let csvToJson = require('convert-csv-to-json');
 const db = require("../models");
 const Good = db.good;
 const User = db.user;
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 
 let main = async () => {
@@ -9,7 +11,8 @@ let main = async () => {
     let user_id = null;
     let users = await User.findAll({});
     if (!users.length) {
-        let data = await User.create({name: 'luis', user: 'jojo', password: 'dddd' });
+        let password = await bcrypt.hash('123', saltRounds); 
+        let data = await User.create({name: 'luis', user: 'jojo', password });
         user_id = data.id;
     } else {
         user_id = users[0].id

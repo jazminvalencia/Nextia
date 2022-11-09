@@ -4,6 +4,7 @@ const Users = db.user;
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+
 exports.login = async (req, res, next) => {
   let { user, password } = req.body;
   
