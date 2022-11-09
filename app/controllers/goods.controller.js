@@ -45,11 +45,11 @@ exports.update = async (req, res) => {
       let data = await Goods.update(good, {where: { id: id }});
       if (data == 1) {
          res.send({
-           message: "Tutorial was updated successfully."
+           message: "update was updated successfully."
          });
        } else {
          res.send({
-           message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found or req.body is empty!`
+           message: `Cannot update with id=${id}. Maybe good was not found or req.body is empty!`
          });
        }
       res.send(data);
@@ -57,7 +57,7 @@ exports.update = async (req, res) => {
       console.log(err);
       res.status(500).send({
          message:
-         err.message || "Error updating Tutorial with id=" + id
+         err.message || "Error updating goods with id=" + id
        });
    }
 };
@@ -70,7 +70,7 @@ exports.destroy = async (req, res) =>{
    } catch (err) {
       res.status(500).send({
          message:
-         err.message || "Error updating Tutorial with id=" + id
+         err.message || "Error updating goods with id=" + id
        });
    }
 }
