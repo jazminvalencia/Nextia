@@ -10,7 +10,8 @@ class UserClass extends BaseClass {
         },
         this.user = {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: true
         },
         this.password = {
             type: DataTypes.STRING,

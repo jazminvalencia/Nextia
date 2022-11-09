@@ -77,7 +77,6 @@ exports.destroy = async (req, res) =>{
 
 exports.multiId = async (req, res) => {
    const id = req.body.goodsIds;
-   
    try {
       let data = await Goods.findAll({where: {id: id}});
       res.send(data);

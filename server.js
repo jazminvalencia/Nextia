@@ -25,9 +25,9 @@ app.use('/static', express.static('public'));
 const db = require("./app/models");
 
 db.sequelize.sync();
- //db.sequelize.sync({ force: true }).then(() => {
- //  console.log("Drop and re-sync db.");
- //});
+// db.sequelize.sync({ force: true }).then(() => {
+//   console.log("Drop and re-sync db.");
+// });
 require("./app/routes/auth.route")(app);
 app.use(authenticateJWT);
 require("./app/routes/goods.route")(app);

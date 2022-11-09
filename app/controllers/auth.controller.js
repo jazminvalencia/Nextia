@@ -1,17 +1,17 @@
 const { good } = require("../models");
 const db = require("../models");
 const Users = db.user;
-const Op = db.Sequelize.Op;
 const jwt = require("jsonwebtoken");
-
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 exports.login = async (req, res, next) => {
   let { user, password } = req.body;
- 
+  
   let existingUser;
   try {
     existingUser = await Users.findOne({where: { user: user }});
-
-    if (!existingUser || existingUser.password != password) {
+    let comparepass = await bcrypt.compare(password, existingUser.password)
+    if (!existingUser || !comparepass) {
       const error = Error("Wrong details please check at once");
       return next(error);
     }
@@ -40,7 +40,8 @@ exports.login = async (req, res, next) => {
 };
 
 exports.signUp = async (req, res, next) => {
-   const { name, user, password } = req.body;
+   let { name, user, password } = req.body;
+   password = await bcrypt.hash(password, saltRounds);
   const newUser = {
     name,
     user,
