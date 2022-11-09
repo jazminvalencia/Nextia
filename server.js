@@ -1,8 +1,9 @@
+const { PORT,NODE_ENV } =  require('./app/env/config');
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const { authenticateJWT } = require("./app/middlewares/auth")
-
+console.log(NODE_ENV);
 var path = require('path');
 global.appRoot = path.resolve(__dirname);
 
@@ -23,6 +24,7 @@ app.use(express.static(__dirname + '/dist'));
 app.use('/static', express.static('public'));
 
 const db = require("./app/models");
+const { Console } = require('console');
 
 db.sequelize.sync();
 // db.sequelize.sync({ force: true }).then(() => {
@@ -32,8 +34,6 @@ require("./app/routes/auth.route")(app);
 app.use(authenticateJWT);
 require("./app/routes/goods.route")(app);
 
-
-const PORT = process.env.PORT || 5678;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

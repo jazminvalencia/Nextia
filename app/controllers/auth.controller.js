@@ -1,4 +1,4 @@
-const { good } = require("../models");
+const { SECRET } =  require('../env/config');
 const db = require("../models");
 const Users = db.user;
 const jwt = require("jsonwebtoken");
@@ -18,7 +18,7 @@ exports.login = async (req, res, next) => {
 
      token = jwt.sign(
       { id: existingUser.id, user: existingUser.user },
-      "secretkeyappearshere",
+      SECRET,
       { expiresIn: "1h" }
     );
 
@@ -53,7 +53,7 @@ exports.signUp = async (req, res, next) => {
       let data = await Users.create(newUser);
       token = jwt.sign(
          { userId: data.id, user: data.user },
-         "secretkeyappearshere",
+         SECRET,
          { expiresIn: "1h" }
        );
        res

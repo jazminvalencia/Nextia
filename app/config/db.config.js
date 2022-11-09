@@ -1,9 +1,10 @@
+const { HOST,USER,PASSWORD,DB,DIALECT } =  require('../env/config');
 module.exports = {
-  HOST: "localhost",
-  USER: "postgres",
-  PASSWORD: "postgres",
-  DB: "proyectodb",
-  dialect: "postgres",
+  HOST: HOST ,
+  USER: USER,
+  PASSWORD: PASSWORD,
+  DB: DB,
+  dialect: DIALECT,
   pool: {
     max: 5,
     min: 0,
