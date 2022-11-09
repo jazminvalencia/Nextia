@@ -20,7 +20,7 @@ npm run dev
 
 ```
 
-### Se agrego una carpeta Script en la cual se agregaron los retos de la prueba tecnica y un script para cargar los datos de los bienes
+### Se agrego una carpeta Script la cual contiene los retos de la prueba tecnica y un script para cargar los datos de los bienes
 
 ```
 /app/scripts
